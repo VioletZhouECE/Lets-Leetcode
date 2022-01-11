@@ -37,7 +37,7 @@ class Solution(object):
                 longestStr = evenStr
         return longestStr
         
-    def getPalindromeLength(self, s, left, right):
+    def getPalindrome(self, s, left, right):
         while left>=0 and right<len(s) and s[left] == s[right]:
             left -= 1
             right += 1
