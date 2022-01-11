@@ -1,6 +1,4 @@
 """
-https://leetcode.com/problems/longest-palindromic-substring/
-
 The wrong reccurence relation:
 if s[j] == s[j]:
     LPS(i,j,s) = LPS(i+1,j-1,s) + 2
@@ -29,8 +27,8 @@ class Solution(object):
         """
         longestStr = ''
         for i in range(len(s)):
-            oddStr = self.getPalindromeLength(s,i,i)
-            evenStr = self.getPalindromeLength(s,i,i+1)
+            oddStr = self.getPalindrome(s,i,i)
+            evenStr = self.getPalindrome(s,i,i+1)
             if len(oddStr) > len(evenStr) and len(oddStr) > len(longestStr):
                 longestStr = oddStr
             elif len(evenStr) > len(longestStr):
