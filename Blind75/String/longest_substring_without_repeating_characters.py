@@ -6,6 +6,11 @@ The longest Substring Without Repeating Characters that starts at index i tells 
     
 """
 class Solution(object):
+    """
+    "Standard" solution (where the window is shrinked):
+    If the window is valid - update; otherwise, move the left pointer until we get to a new position where the window might be valid
+    (and we check its validity in the next iteration).
+    """
     def lengthOfLongestSubstring(self, s):
         """
         :type s: str
@@ -25,5 +30,26 @@ class Solution(object):
                     left += 1
                 charSet.remove(s[left])
                 left += 1
+        
+        return maxLength
+
+    """
+    How to slide the window "faster"?
+    The index of the last occurrence of the repeating char + 1 = the starting index of the next window.
+    Note: Our charSeen contain some old data as we did not update it when sliding the window, that's why we need to check left <= charSeen[s[right]].
+    """
+    def lengthOfLongestSubstring2(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        charSeen = {}
+        left, right, maxLength = 0, 0, 0
+        while right < len(s):
+            if s[right] in charSeen and left <= charSeen[s[right]]:
+                left = charSeen[s[right]] + 1
+            maxLength = max(right-left+1, maxLength)
+            charSeen[s[right]] = right
+            right += 1
         
         return maxLength
