@@ -3,7 +3,7 @@ https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characte
 
 Pattern:
 update map/set/the helper data structure,
-fix the window if it is not valid (move the left pointer until we get to a new position where the window might be valid), 
+fix the window if it is not valid (move the left pointer until the window is valid again).
 update maxLength
 """
 class Solution(object):

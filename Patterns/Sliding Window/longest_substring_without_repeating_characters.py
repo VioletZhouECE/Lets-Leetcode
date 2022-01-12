@@ -8,7 +8,7 @@ The longest Substring Without Repeating Characters that starts at index i tells 
 class Solution(object):
     """
     "Standard" solution (where the window is shrinked):
-    If the window is valid - update; otherwise, move the left pointer until we get to a new position where the window might be valid
+    If the window is valid - update; otherwise, move the left pointer until the window is valid again.
     (and we check its validity in the next iteration).
     """
     def lengthOfLongestSubstring(self, s):
