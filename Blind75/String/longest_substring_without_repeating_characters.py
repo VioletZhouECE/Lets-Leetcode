@@ -20,12 +20,10 @@ class Solution(object):
                 right += 1
             else:
                 #move the left pointer until we encounter the char that is the same as s[right] - after removing that char, we might be able to find a longer substring starting at index left+1.
-                while left < right:
+                while s[left] != s[right]:
                     charSet.remove(s[left])
-                    if s[left] == s[right]:
-                        break
                     left += 1
-                #s[left] == s[right]
+                charSet.remove(s[left])
                 left += 1
         
         return maxLength
