@@ -22,7 +22,6 @@ class Solution(object):
         :rtype: int
         """
         maxLength, maxFreq, left, right = 0, 0, 0, 0
-        mostFreqLetter = '0'
         frequencyMap = {'0': 0}
         
         while right < len(s):
