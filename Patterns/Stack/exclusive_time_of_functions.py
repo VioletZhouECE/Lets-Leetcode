@@ -1,4 +1,8 @@
 """
+Ugh I hate this one :(
+
+https://leetcode.com/problems/exclusive-time-of-functions/
+
 Keys:
 1. we need to use a stack to keep track of the current function which is being executed.
 2. we need to store the previous timestamp - this information allows us to compute the time elapsed.
