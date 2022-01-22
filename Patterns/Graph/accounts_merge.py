@@ -1,4 +1,6 @@
 """
+https://leetcode.com/problems/accounts-merge/
+
 Graph (DFS/BFS):
 1. Create a graph where each node reprensents an email.
 2. Use an additional set to keep track of the owner of these emails.
