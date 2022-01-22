@@ -51,3 +51,48 @@ class Solution:
         for neighbour in graph[node]:
             if neighbour in graph and neighbour not in seen:
                 self.dfs(neighbour, graph, seen, components)
+
+"""
+Union find:
+Ownership is a bijection between email and index: it tells us which emails are stored at each index
+Path compression ensures that uf.find(index) is constant time (amortized over operations)
+
+Runtime: O(n) where n is the total number of emails
+
+Aside: Union find vs DFS
+From CLRS: "When the edges of the graph are dynamic – changing over time – DFS is not a good choice since it cannot be applied progressively; we can compute the connected components faster by using union-find."
+i.e. If you want to add a new edge, you will need to run DFS again on the entire graph to update the connected component, whereas with union find you can do this update in constant time.
+
+"""
+class UF:
+    def __init__(self, size):
+        self.ids = [i for i in range(size)]
+        
+    def union(self, child, parent):
+        self.ids[self.getRoot(child)] = self.getRoot(parent)
+        
+    def getRoot(self, index):
+        #base case: the root
+        if index != self.ids[index]:
+            # path compression - we builds a direct edge between every child node and the root
+            self.ids[index] = self.getRoot(self.ids[index])
+        return self.ids[index]
+    
+class Solution:
+    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+        uf = UF(len(accounts))
+        
+        ownership = {}
+        for i, account in enumerate(accounts):
+            for email in account[1:]:
+                if email in ownership:
+                    #union
+                    uf.union(i, ownership[email])
+                ownership[email] = i
+        
+        #"collect" the emails: {root: [emails]}
+        result = defaultdict(list)
+        for email, index, in ownership.items():
+            result[uf.getRoot(index)].append(email)
+            
+        return [[accounts[i][0]] + sorted(emails) for i, emails in result.items()]
