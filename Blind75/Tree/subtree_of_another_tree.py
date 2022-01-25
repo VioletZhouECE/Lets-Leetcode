@@ -4,12 +4,17 @@ https://leetcode.com/problems/subtree-of-another-tree/
 DFS:
 root: n nodes, subRoot: m nodes
 Time complexity: O(m*n).
-Space complexity: O(height(m)+height(n)).
+Space complexity: O(height(m)+height(n)). worst-case: O(m+n)
 O(height(n)) comes from isSubtree, O(height(m)) comes from isSameTree
 We need to store a "path" on stack (aka, the node and its sibling)
 
-BFS in theory have similar time and space complexity, but it runs faster for this question in practice. 
-Probably doing the searching level by level has an advantage.
+BFS runs faster for this question because the node we are searching for likely appear closer to the root than to the leaf
+time.
+Time complexity: O(m*n).
+Space complexity: O(n+height(m)).  worst-case: O(m+n)
+
+A very good comparision on DFS vs BFS on a tree btw:
+https://www.geeksforgeeks.org/bfs-vs-dfs-binary-tree/
 """
 # Definition for a binary tree node.
 # class TreeNode:
