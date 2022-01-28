@@ -40,7 +40,7 @@ class Solution:
     2. Pass the array by reference instead of making a copy and slicing it each time.
 
     Time complexity: O(n). Space complexity: O(n)
-    Best-case: T(n) = 2T(n/2) + O(1) -> T(n) = O(logn)
+    Best-case: T(n) = 2T(n/2) + O(1) -> T(n) = O(n)
     Worst-case: T(n) = T(n-1) + O(1) -> T(n) = O(n)
     """
     def buildTreeImproved(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
