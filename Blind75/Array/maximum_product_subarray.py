@@ -1,4 +1,6 @@
 """
+https://leetcode.com/problems/maximum-product-subarray/
+
 We need to keep track of both prevMax and prevMin because both 
 1. prevMax * nums[i]
 2. prevMin * nums[i]
