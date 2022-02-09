@@ -12,6 +12,15 @@ If we move it backward, the right line is going to decrease in height and determ
 ((height[right]*(right-left)) is going to be smaller than the previous solution we found at left-1 (height[right]*(right-left+1)) 
 since the distance between left and right is smaller.
 
+Thought process:
+Think about how you can skip some checks and improve the brutal force solution:
+1. Which starting index can we skip?
+    curr.height <= prev.height
+2. For each starting index, which ending index can we skip?
+    Everything to the left of the right line which matches the height of the left line
+3. Do we ever need to move the ending index backward?
+    No. See the important note above.
+
 A cleaner O(n) solution:
 If height[left] < height[right]: move left
 Otherwise: move right
