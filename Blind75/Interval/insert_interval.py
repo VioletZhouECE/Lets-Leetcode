@@ -1,10 +1,11 @@
 """
 https://leetcode.com/problems/insert-interval/
-
-This code looks a bit ugly because we need to handle the case where there is no overlaping intervals separately.
-This is not very elegant.
 """
 class Solution:
+    """
+    This code looks a bit ugly because we need to handle the case where there is no overlaping intervals separately.
+    This is not very elegant.
+    """
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
         left = 0
         
@@ -25,3 +26,23 @@ class Solution:
         newIntervals = intervals[0:left] + [[startTime, endTime]] + intervals[right+1:]
         
         return newIntervals
+
+    """
+    This is a lot cleaner :)
+    For loop gives a nicer pattern than two while loops
+    Also being able to continously merge is nice :)
+    """
+    def insert_clean(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        res = []
+        
+        for i, interval in enumerate(intervals):
+            if interval[1] < newInterval[0]:
+                res.append(interval)
+            elif interval[0] > newInterval[1]:
+                return res + [newInterval] + intervals[i:]
+            else:
+                newInterval[0] = min(newInterval[0], interval[0])
+                newInterval[1] = max(newInterval[1], interval[1])
+        
+        #if the newly inserted interval should be the last interval
+        return res + [newInterval]
