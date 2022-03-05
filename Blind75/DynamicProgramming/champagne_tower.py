@@ -5,6 +5,8 @@ Mathematic relationships can be expressed in a recursive manner :)
 
 Is this faster than recursion with memoization?
 No. DP uses an equal amount of space and also computes many subproblems we don't need to solve.
+
+Time complexity: O(n^2). Space complexity: O(n^2)
 """
 class Solution:
     def champagneTower(self, poured: int, query_row: int, query_glass: int) -> float:
