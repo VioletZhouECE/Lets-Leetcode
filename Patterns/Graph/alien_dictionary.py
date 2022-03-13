@@ -62,3 +62,59 @@ class Solution:
         result.append(node)
         state[node] = 2
         return True
+
+    """
+    Btw this is how you can detect cycles in a directed graph with BFS :)
+    """
+    def alienOrder2(self, words: List[str]) -> str:
+        graph = {}
+        allChars = set("".join(words))
+        indegrees = {}
+       
+        for i in range(1,len(words)):
+            prevWord = words[i-1]
+            currWord = words[i] 
+            #find the first char that differs
+            i = 0
+            
+            while i<len(prevWord) and i<len(currWord):
+                if prevWord[i] != currWord[i]:
+                    break
+                i += 1
+            
+            if i<len(prevWord) and i<len(currWord):
+                if prevWord[i] not in graph:
+                    graph[prevWord[i]] = []
+                    indegrees[prevWord[i]] = 0
+                graph[prevWord[i]].append(currWord[i])
+                if currWord[i] not in indegrees:
+                    indegrees[currWord[i]] = 0
+                    graph[currWord[i]] = []
+                indegrees[currWord[i]] += 1
+            elif i==len(currWord) and i<len(prevWord):
+                return ""
+        
+        result = []
+        self.bfs(graph, indegrees, result)
+        #cycle detection
+        if len(result) != len(graph.keys()):
+            return ""
+        unvisitedChars = list(allChars.difference(set(graph.keys())))
+        result.extend(unvisitedChars)
+        
+        return "".join(result)
+        
+    def bfs(self, graph, indegrees, result):
+        queue = deque()
+        
+        for i in indegrees.keys():
+            if indegrees[i] == 0:
+                queue.append(i)
+            
+        while queue:
+            node = queue.popleft()
+            result.append(node)
+            for neighbour in graph[node]:
+                indegrees[neighbour] -= 1
+                if indegrees[neighbour] == 0:
+                    queue.append(neighbour)
