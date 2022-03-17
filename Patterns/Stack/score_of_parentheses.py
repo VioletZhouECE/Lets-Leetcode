@@ -8,8 +8,6 @@ Example:
 Recursion: Yeah I guess we can try doing that... but it is not easy to extract the sublists since we are dealing with a string, not a data structure like in Nested List Weighted Sum.
 Iteration: Yes! This is much cleaner. We just update the depth/level as you go through the list. ezpz
 
-We can also solve Nested List Weighted Sum iteratively using this approach.
-
 Time complexiy: O(n). Space complexity: O(1)
 """
 class Solution:
