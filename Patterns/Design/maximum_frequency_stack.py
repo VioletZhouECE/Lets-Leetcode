@@ -1,4 +1,6 @@
 """
+https://leetcode.com/problems/maximum-frequency-stack/
+
 I am blown away by this O(1) solution :O
 2 data structures:
 helper - frequency map (to quickly find out where to insert the number) & 
