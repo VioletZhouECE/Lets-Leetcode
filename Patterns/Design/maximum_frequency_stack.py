@@ -12,6 +12,12 @@ We can use frequency as the key of mapping and quickly look up the key == self.m
 Let's let the "frequency" be contiguous :)
 
 Time complexity: O(1). Space complexity: O(n)
+
+Observation: If we change this question a bit,
+ex1. we need to delete the most frequent number 
+ex2. we need to increment the frequency by x
+then this solution will not work anymore because it relies on the pattern of push(add 1) & pop(remove 1). 
+We need to resort to our old friend pq.
 """
 class FreqStack:
 
