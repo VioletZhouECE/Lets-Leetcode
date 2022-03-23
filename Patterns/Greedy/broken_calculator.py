@@ -1,9 +1,9 @@
 """
 https://leetcode.com/problems/broken-calculator/
 
-Why does this greedy algorithm work?
-If the number is even, maybe we should add 1*n to the number and then divide it by two. Is that going to make things better?
-No, if you divide it by 2, it will be even closer to the power of 2. We should only add 1 to the number when we have to (aka when it becomes odd)
+Key: If the number is even, maybe we should add 1*n to the number and then divide it by two. Is that going to make things better?
+No, if you divide it by 2, it will be even closer to the value we are targeting. We should only add 1 to the number when we have to (aka when it becomes odd)
+This allows us to make greedy choices: if even, /2, if odd, +1
 """
 class Solution:
     #recursion
