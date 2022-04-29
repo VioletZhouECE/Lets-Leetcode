@@ -14,6 +14,9 @@ Remember to include chars that are not in the graph:
 Time complexity: O(k) where k is the number of characters. Space complexity: O(k)
 """
 class Solution:
+    """
+    DFS
+    """
     def alienOrder(self, words: List[str]) -> str:
         graph = {}
         allChars = set("".join(words))
@@ -64,7 +67,7 @@ class Solution:
         return True
 
     """
-    Btw this is how you can detect cycles in a directed graph with BFS :)
+    BFS - kahn's algorithm
     """
     def alienOrder2(self, words: List[str]) -> str:
         graph = {}
