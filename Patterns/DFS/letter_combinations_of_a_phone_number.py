@@ -1,3 +1,11 @@
+"""
+https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+
+Runtime: exponential
+Every new number triple/quadruple the size of the output.
+Runtime is dominated by the number of recursive calls, which is dominated by the number of leaves 
+(or equivalently, the size of the output) in this case.
+"""
 class Solution:
     def __init__(self):
         self.mapping = ["abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
