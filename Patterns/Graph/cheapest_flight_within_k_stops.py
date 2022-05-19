@@ -11,6 +11,9 @@ class Solution:
     Worst-case: O(n^k) - there can't be two node i with the same number of stops due to the pruning we did 
     (if visited[src] <= stops: continue), which only adds the node if it uses fewer stops.
     Time: O(n^k*log(n^k))
+
+    This solution can be improved if a helper array is implemented to make update O(logn) which allows us to do update 
+    instead of add. However, it's not very pratical to implement pq in an interview.
     """
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
         # graph: [[(dest, price)]]
