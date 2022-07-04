@@ -1,16 +1,19 @@
 """
-https://leetcode.com/problems/candy/
-
 This is a tricky problem
 https://www.youtube.com/watch?v=h6_lIwZYHQw
 
-Key: it's too difficult to consider the left neighbour and the right neighbour at the same time, so we break the problem down into two subproblems and merge the solutions
+Key: it's too difficult to consider the left neighbour and the right neighbour at the same time, 
+so we break the problem down into two subproblems and merge the solutions to reduce the complexity. 
+Note that we can easily merge the solutions because the two subproblems do not have overlaps 
+(one only consider inc, one only consider dec)
+
+This is a perfect example of big problem -> subproblems and merge the solutions
 """
 class Solution:
     def candy(self, ratings: List[int]) -> int:
         numOfChildren = len(ratings)
-        leftToRight = [1 for _ in range(numOfChildren)]
-        rightToLeft = [1 for _ in range(numOfChildren)]
+        leftToRight = [1 for i in range(numOfChildren)]
+        rightToLeft = [1 for i in range(numOfChildren)]
         
         for i in range(1,len(ratings)):
             if ratings[i-1] < ratings[i]:
