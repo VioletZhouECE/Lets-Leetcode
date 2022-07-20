@@ -24,14 +24,9 @@ class Solution:
             if knows(celebrity, i):
                 celebrity = i
         
-        # verify that everyone knows the celebrity
+        # verify that everyone knows the celebrity and that the celebrity doesn't know anyone except themselves
         for i in range(n):
-            if not knows(i, celebrity):
-                return -1
-            
-        # verify that the celebrity doesn't know anyone except themselves
-        for i in range(n):
-            if i != celebrity and knows(celebrity, i):
+            if (not knows(i, celebrity)) or (i != celebrity and knows(celebrity, i)):
                 return -1
             
         return celebrity
